@@ -14,4 +14,6 @@
 /text-serializer-legacy/out/
 /text-serializer-plain/build/
 /text-serializer-plain/out/
+/serializer-configurate3/build/
+/serializer-configurate3/out/
 /*.iml

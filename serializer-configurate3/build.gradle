@@ -1,0 +1,13 @@
+
+repositories {
+  maven { // TODO: move to sponge repo once published there
+    url 'https://repo.glaremasters.me/repository/permissionsex'
+    name 'pex'
+  }
+}
+
+dependencies {
+  api project(":adventure-api")
+  api 'org.spongepowered:configurate-core:3.7'
+  testImplementation project(":adventure-text-serializer-gson")
+}

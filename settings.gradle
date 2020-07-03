@@ -1,6 +1,6 @@
 rootProject.name = 'adventure-parent'
 
-['api', 'nbt'].each {
+['api', 'nbt', 'serializer-configurate3'].each {
   include "$it"
   findProject(":$it")?.name = "adventure-$it"
 }
