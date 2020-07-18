@@ -230,4 +230,23 @@ class LegacyComponentSerializerTest {
 
     assertEquals(expected, LegacyComponentSerializer.legacy(LegacyComponentSerializer.AMPERSAND_CHAR).deserialize(input));
   }
+
+  @Test
+  void testStackedFormattingFlags() {
+    // https://github.com/KyoriPowered/adventure/issues/92
+    final String input = "§r§r§c§k||§e§lProfile§c§k||";
+    final TextComponent output = TextComponent.builder().append(
+      TextComponent.of("||", Style.of(NamedTextColor.RED, TextDecoration.OBFUSCATED)),
+      TextComponent.of("Profile", Style.of(NamedTextColor.YELLOW, TextDecoration.BOLD)),
+      TextComponent.of("||", Style.of(NamedTextColor.RED, TextDecoration.OBFUSCATED))
+    ).build();
+    assertEquals(output, LegacyComponentSerializer.legacy().deserialize(input));
+  }
+
+  @Test
+  void testResetClearsColorInSameBlock() {
+    final String input = "§c§rCleared";
+    final TextComponent output = TextComponent.of("Cleared");
+    assertEquals(output, LegacyComponentSerializer.legacy().deserialize(input));
+  }
 }
